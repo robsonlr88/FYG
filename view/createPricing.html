@@ -1,0 +1,171 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+
+<div class="wrapper fadeInDown" ng-controller="propertyPricingCtrl" ng-init="getIdPricing()">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="panel-heading p-3 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h3 class="panel-title justify-content text-align-center">Tell us about the costs to stay at your property</h3>
+        </div>
+        <div class="column pb-5">
+            <div class="justify-content text-align-center">
+                <div class="progress">
+                    <div class="progress__fill"></div>
+                    <span class="progress__text">60%</span>
+                </div>
+            </div>
+        </div>
+
+        <form name="propertyPricingForm" class="form-submission">
+            <div class="column" ng-if="withData">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/insertPictures/{{property.propertyid}}">NEXT</a>
+                  </div>
+                </div>
+            </div>
+            <div class="column pb-3">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertyPricing(property)" ng-disabled="propertyPricingForm.$invalid">SAVE</button>
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="column pt-5 pb-3">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <h4>Rates per night</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" pt-4">
+                <div class="row">
+                    <div class="col-md-9 form-check form-switch">
+                        <label class="form-check-label" for="property.tent">Tent site (required)</label> 
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.tentprice" name="pricepertent" placeholder="$" ng-required="true"/>                            
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 form-check form-switch">
+                        <label class="form-check-label" for="property.rv">RV site (required)</label> 
+                    </div>
+                    <div class="col-md-4">
+                        <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.rvprice" name="priceperrv" placeholder="$" ng-required="true"/>                           
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-md-9 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="property.person" ng-model="property.person">
+                    <label class="form-check-label" for="property.person">Per person (optional)</label>
+                </div>
+                <div class="col-md-4" ng-show="property.person">
+                    <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.personprice" name="personprice" placeholder="$"/>
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-md-9 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="property.otherfees" ng-model="property.otherfees">
+                    <label ng-show="!property.otherfees" class="form-check-label" for="property.otherfees">Extra fee (optional)</label>
+                    <input ng-show="property.otherfees" placeholder="Fee Name (optional)" type="text" class="fadeIn p-3 border rounded border-light text-center bg-gray" for="property.otherfees" ng-model="property.otherfeesname">
+                </div>
+                <div class="col-md-4" ng-show="property.otherfees">
+                    <input class="fadeIn p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.otherfeesprice" name="otherfeesprice" placeholder="$"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--
+<div class="row-wide" ng-controller="propertyPricingCtrl" ng-init="getIdPricing()">
+    <div class="row-1000px">
+        <div class="jumbotron" >
+            <div class="row-700">
+                <div class="panel-heading justify-content text-align-center">
+                    <h3>Tell us about the costs to stay at your property</h3>
+                </div>
+            </div>
+
+            <div class="column pb-5">
+                <div class="justify-content text-align-center">
+                    <div class="progress">
+                        <div class="progress__fill"></div>
+                        <span class="progress__text">60%</span>
+                    </div>
+                </div>
+            </div>
+
+            <form name="propertyPricingForm" class="form-submission">
+                <div class="column" ng-if="withData">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/insertPictures/{{property.propertyid}}">NEXT</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="column pb-3">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertyPricing(property)" ng-disabled="propertyPricingForm.$invalid">SAVE</button>
+                      </div>
+                    </div>
+                </div>
+
+
+                <div class="column pt-5 pb-3">
+                    <div class="flex justify-content">
+                        <div class="text-align-center">
+                            <h4>Rates per night</h5>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class=" pt-4">
+                    <div class="row-princing">
+                        <div class="col-md-9 form-check form-switch">
+                            <label class="form-check-label" for="property.tent">Tent site (required)</label> 
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 15px;">
+                            <input class="form-control" type="text" ng-model="property.tentprice" name="pricepertent" placeholder="$" ng-required="true"/>                            
+                        </div>
+                    </div>
+                    <div class="row-princing">
+                        <div class="col-md-9 form-check form-switch">
+                            <label class="form-check-label" for="property.rv">RV site (required)</label> 
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" ng-model="property.rvprice" name="priceperrv" placeholder="$" ng-required="true"/>                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-princing pt-4">
+                    <div class="col-md-9 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.person" ng-model="property.person">
+                        <label class="form-check-label" for="property.person">Per person (optional)</label>
+                    </div>
+                    <div class="col-md-4" ng-show="property.person">
+                        <input class="form-control" type="text" ng-model="property.personprice" name="personprice" placeholder="$"/>
+                    </div>
+                </div>
+                <div class="row-princing pt-4">
+                    <div class="col-md-9 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.otherfees" ng-model="property.otherfees">
+                        <label ng-show="!property.otherfees" class="form-check-label" for="property.person">Extra fee (optional)</label>
+                        <input ng-show="property.otherfees" placeholder="Fee Name (optional)" type="text" class=" form-check-label" for="property.otherfees" ng-model="property.otherfeesname">
+                    </div>
+                    <div class="col-md-4" ng-show="property.otherfees">
+                        <input class="form-control" type="text" ng-model="property.otherfeesprice" name="otherfeesprice" placeholder="$"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

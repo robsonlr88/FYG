@@ -1,0 +1,266 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown" ng-controller="propertySurroundingsCtrl" ng-init="getIdSurroundings()">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="panel-heading p-3 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h3 class="panel-title justify-content text-align-center">Tell us more about your property</h3>
+        </div>
+        <div class="column pb-5">
+            <div class="justify-content text-align-center">
+                <div class="progress">
+                    <div class="progress__fill"></div>
+                    <span class="progress__text">40%</span>
+                </div>
+            </div>
+        </div>
+        <form name="propertySurroundingsForm" class="form-submission">
+
+
+            <div class="column" ng-if="withData">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/propertyPricing/{{property.propertyid}}">NEXT</a>
+                  </div>
+                </div>
+            </div>
+
+            <div class="column pb-3">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertySurroundings(property)" ng-disabled="propertySurroundingsForm.$invalid">SAVE</button>
+                </div>
+            </div>
+
+            <div class="row pt-4 p-3">
+                <div class="col-md-6 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="property.grocery" ng-model="property.grocery">
+                    <label class="form-check-label" for="property.grocery">Grocery shops(s)?</label>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-control" ng-show="property.grocery" name="grocerydistance" ng-model="property.grocerydistance">
+                        <option value="">Distance</option>
+                        <option value="Inside the Property">Inside the property</option>
+                        <option value="1km">Less than 1km</option>
+                        <option value="1 to 5km">Between 1km to 5km </option>
+                        <option value="5 to 10km">Between 5km to 10km </option>
+                        <option value="+10km">More than 10km </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row pt-4 p-3">
+                <div class="col-md-8 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="property.wateraccess" ng-model="property.wateraccess">
+                    <label class="form-check-label" for="property.wateraccess">Water access? (Leisure/Swim)</label>
+                </div>
+            </div>
+
+
+
+            <div ng-show="property.wateraccess">
+                <div class="row pt-4 p-3">
+                    <div class="col-md-6 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" ng-model="property.ocean" id="property.ocean"/>
+                        <label class="form-check-label" for="property.ocean">Ocean</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select ng-show="property.ocean" class="form-control" name="power" ng-model="property.oceandistance">
+                            <option value="">Distance</option>
+                            <option value="Inside the Property">Inside the property</option>
+                            <option value="1km">Less than 1km</option>
+                            <option value="1 to 5km">Between 1km to 5km </option>
+                            <option value="5 to 10km">Between 5km to 10km </option>
+                            <option value="+10km">More than 10km </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-4 p-3">
+                    <div class="col-md-6 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" ng-model="property.lake" id="property.lake"/>
+                        <label class="form-check-label" for="property.lake">Lake</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select ng-show="property.lake" class="form-control" name="power" ng-model="property.lakedistance">
+                            <option value="">Distance</option>
+                            <option value="Inside the Property">Inside the property</option>
+                            <option value="1km">Less than 1km</option>
+                            <option value="1 to 5km">Between 1km to 5km </option>
+                            <option value="5 to 10km">Between 5km to 10km </option>
+                            <option value="+10km">More than 10km </option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row pt-4 p-3">
+                    <div class="col-md-6 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.river" ng-model="property.river"/>
+                        <label class="form-check-label" for="property.river">River</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select ng-show="property.river" class="form-control" name="power" ng-model="property.riverdistance">
+                            <option value="">Distance</option>
+                            <option value="Inside the Property">Inside the property</option>
+                            <option value="1km">Less than 1km</option>
+                            <option value="1 to 5km">Between 1km to 5km </option>
+                            <option value="5 to 10km">Between 5km to 10km </option>
+                            <option value="+10km">More than 10km </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-4 p-3">
+                <div class="col-md-6 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="property.nationalpark" ng-model="property.nationalpark">
+                    <label class="form-check-label" for="property.nationalpark">National Park(s)?</label>
+                </div>
+                <div class="col-md-6" ng-show="property.nationalpark">
+                    <select class="form-control" name="power" ng-model="property.nationalparkdistance">
+                        <option value="">Distance</option>
+                        <option value="Inside the Property">Inside the property</option>
+                        <option value="1km">Less than 1km</option>
+                        <option value="1 to 5km">Between 1km to 5km </option>
+                        <option value="5 to 10km">Between 5km to 10km </option>
+                        <option value="+10km">More than 10km </option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
+<div class="row-wide" ng-controller="propertySurroundingsCtrl" ng-init="getIdSurroundings()">
+    <div class="row-1000px">
+        <div class="jumbotron" >
+            <div class="row-700">
+                <div class="panel-heading justify-content text-align-center">
+                    <h3>Tell us more about your property</h3>
+                </div>
+            </div>
+            <div class="column pb-5">
+                <div class="justify-content text-align-center">
+                    <div class="progress">
+                        <div class="progress__fill"></div>
+                        <span class="progress__text">40%</span>
+                    </div>
+                </div>
+            </div>
+            <form name="propertySurroundingsForm" class="form-submission">
+
+
+                <div class="column" ng-if="withData">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/propertyPricing/{{property.propertyid}}">NEXT</a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="column pb-3">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertySurroundings(property)" ng-disabled="propertySurroundingsForm.$invalid">SAVE</button>
+                    </div>
+                </div>
+
+                <div class="row pt-4 p-3">
+                    <div class="col-md-6 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.grocery" ng-model="property.grocery">
+                        <label class="form-check-label" for="property.grocery">Grocery shops(s)?</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" ng-show="property.grocery" name="grocerydistance" ng-model="property.grocerydistance">
+                            <option value="">Distance</option>
+                            <option value="Inside the Property">Inside the property</option>
+                            <option value="1km">Less than 1km</option>
+                            <option value="1 to 5km">Between 1km to 5km </option>
+                            <option value="5 to 10km">Between 5km to 10km </option>
+                            <option value="+10km">More than 10km </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row pt-4 p-3">
+                    <div class="col-md-8 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.wateraccess" ng-model="property.wateraccess">
+                        <label class="form-check-label" for="property.wateraccess">Water access? (Leisure/Swim)</label>
+                    </div>
+                </div>
+
+
+
+                <div ng-show="property.wateraccess">
+                    <div class="row pt-4 p-3">
+                        <div class="col-md-6 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" ng-model="property.ocean" id="property.ocean"/>
+                            <label class="form-check-label" for="property.ocean">Ocean</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-show="property.ocean" class="form-control" name="power" ng-model="property.oceandistance">
+                                <option value="">Distance</option>
+                                <option value="Inside the Property">Inside the property</option>
+                                <option value="1km">Less than 1km</option>
+                                <option value="1 to 5km">Between 1km to 5km </option>
+                                <option value="5 to 10km">Between 5km to 10km </option>
+                                <option value="+10km">More than 10km </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row pt-4 p-3">
+                        <div class="col-md-6 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" ng-model="property.lake" id="property.lake"/>
+                            <label class="form-check-label" for="property.lake">Lake</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-show="property.lake" class="form-control" name="power" ng-model="property.lakedistance">
+                                <option value="">Distance</option>
+                                <option value="Inside the Property">Inside the property</option>
+                                <option value="1km">Less than 1km</option>
+                                <option value="1 to 5km">Between 1km to 5km </option>
+                                <option value="5 to 10km">Between 5km to 10km </option>
+                                <option value="+10km">More than 10km </option>
+                            </select>
+                        </div>
+                    </div>
+    
+
+                    <div class="row pt-4 p-3">
+                        <div class="col-md-6 form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="property.river" ng-model="property.river"/>
+                            <label class="form-check-label" for="property.river">River</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-show="property.river" class="form-control" name="power" ng-model="property.riverdistance">
+                                <option value="">Distance</option>
+                                <option value="Inside the Property">Inside the property</option>
+                                <option value="1km">Less than 1km</option>
+                                <option value="1 to 5km">Between 1km to 5km </option>
+                                <option value="5 to 10km">Between 5km to 10km </option>
+                                <option value="+10km">More than 10km </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-4 p-3">
+                    <div class="col-md-6 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="property.nationalpark" ng-model="property.nationalpark">
+                        <label class="form-check-label" for="property.nationalpark">National Park(s)?</label>
+                    </div>
+                    <div class="col-md-6" ng-show="property.nationalpark">
+                        <select class="form-control" name="power" ng-model="property.nationalparkdistance">
+                            <option value="">Distance</option>
+                            <option value="Inside the Property">Inside the property</option>
+                            <option value="1km">Less than 1km</option>
+                            <option value="1 to 5km">Between 1km to 5km </option>
+                            <option value="5 to 10km">Between 5km to 10km </option>
+                            <option value="+10km">More than 10km </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

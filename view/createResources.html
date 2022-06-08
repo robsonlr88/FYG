@@ -1,0 +1,250 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown" ng-controller="propertyResourcesCtrl" ng-init="getIdResources()">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="p-3 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h2 class="panel-title justify-content text-align-center">Tell us which resources your property provides</h2>
+        </div>
+        <div class="column pb-5">
+            <div class="justify-content text-align-center">
+                <div class="progress">
+                    <div class="progress__fill"></div>
+                    <span class="progress__text">20%</span>
+                </div>
+            </div>
+        </div>
+        <form name="propertyResourcesForm" class="form-submission">
+            <div class="column" ng-if="withData">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/propertySurroundings/{{property.propertyid}}">NEXT</a>
+                  </div>
+                </div>
+            </div>
+
+            <div class="column pb-3">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertyResources(property)" ng-disabled="propertyResourcesForm.$invalid">SAVE</button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="pt-4 p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="potablewater" id="property.potablewater" ng-model="property.potablewater">
+                    <label class="form-check-label" for="property.potablewater">Potable Water</label>
+                </div>
+            </div>
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="toilet" id="property.toilet" ng-model="property.toilet">
+                    <label class="form-check-label" for="property.toilet">Toilet</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="shower" id="property.shower" ng-model="property.shower">
+                    <label class="form-check-label" for="property.shower">Shower</label>
+                </div>
+            </div>
+            <div class="col-md-8  p-3" ng-show="property.shower">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="hotshower" id="property.hotshower" ng-model="property.hotshower">
+                    <label class="form-check-label" for="property.hotshower">Hot Shower</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="kitchen" id="property.kitchen" ng-model="property.kitchen">
+                    <label class="form-check-label" for="property.kitchen">Kitchen</label>
+                </div>
+            </div>
+            <div class="col-md-8  p-3" ng-show="property.kitchen">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="fridge" id="property.fridge" ng-model="property.fridge">
+                    <label class="form-check-label" for="property.fridge">Fridge</label>
+                </div>
+            </div> 
+            <div class="col-md-10  p-3" ng-show="property.kitchen">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="cooking" id="property.cooking" ng-model="property.cooking">
+                    <label class="form-check-label" for="property.cooking">Cooking equipped (Oven, Pans & Pots)</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3" ng-show="property.kitchen">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="eating" id="property.eating" ng-model="property.eating">
+                    <label class="form-check-label" for="property.eating">Cutlery, Plates & Cups</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3" ng-show="property.kitchen">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="coffeemachine" id="property.coffeemachine" ng-model="property.coffeemachine">
+                    <label class="form-check-label" for="property.coffeemachine">Coffe Machine</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="power" id="property.power" ng-model="property.power">
+                    <label class="form-check-label" for="property.power">Power / Electricity</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="campfire" id="property.campfire" ng-model="property.campfire">
+                    <label class="form-check-label"for="property.campfire">Campfire Permitted</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3" ng-show="property.campfire">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="firewood" id="property.firewood" ng-model="property.firewood">
+                    <label class="form-check-label" for="property.firewood">Firewood available</label>
+                </div>
+            </div>
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="kids" id="property.kids" ng-model="property.kids">
+                    <label class="form-check-label"for="property.kids">Kids Playground</label>
+                </div>
+            </div> 
+            <div class="col-md-8  p-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="pets" id="property.pets" ng-model="property.pets">
+                    <label class="form-check-label" for="property.pets">Pet Friendly</label>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+
+<!--
+<div class="row-wide" ng-controller="propertyResourcesCtrl" ng-init="getIdResources()">
+    <div class="row-1000px">
+        <div class="jumbotron" >
+            <div class="row-700">
+                <div class="panel-heading justify-content text-align-center">
+                    <h3>Tell us which resources your property provides</h3>
+                </div>
+            </div>
+
+            <div class="column pb-5">
+                <div class="justify-content text-align-center">
+                    <div class="progress">
+                        <div class="progress__fill"></div>
+                        <span class="progress__text">20%</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <form name="propertyResourcesForm" class="form-submission">
+
+
+                <div class="column" ng-if="withData">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/propertySurroundings/{{property.propertyid}}">NEXT</a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="column pb-3">
+                    <div class="flex justify-content">
+                      <div class="text-align-center">
+                        <button style="width: 300px;" class="btn btn-primary btn-block" ng-click="propertyResources(property)" ng-disabled="propertyResourcesForm.$invalid">SAVE</button>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 pt-4 p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="potablewater" id="property.potablewater" ng-model="property.potablewater">
+                        <label class="form-check-label" for="property.potablewater">Potable Water</label>
+                    </div>
+                </div>
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="toilet" id="property.toilet" ng-model="property.toilet">
+                        <label class="form-check-label" for="property.toilet">Toilet</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="shower" id="property.shower" ng-model="property.shower">
+                        <label class="form-check-label" for="property.shower">Shower</label>
+                    </div>
+                </div>
+                <div class="col-md-8  p-3" ng-show="property.shower">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="hotshower" id="property.hotshower" ng-model="property.hotshower">
+                        <label class="form-check-label" for="property.hotshower">Hot Shower</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="kitchen" id="property.kitchen" ng-model="property.kitchen">
+                        <label class="form-check-label" for="property.kitchen">Kitchen</label>
+                    </div>
+                </div>
+                <div class="col-md-8  p-3" ng-show="property.kitchen">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="fridge" id="property.fridge" ng-model="property.fridge">
+                        <label class="form-check-label" for="property.fridge">Fridge</label>
+                    </div>
+                </div> 
+                <div class="col-md-10  p-3" ng-show="property.kitchen">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="cooking" id="property.cooking" ng-model="property.cooking">
+                        <label class="form-check-label" for="property.cooking">Cooking equipped (Oven, Pans & Pots)</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3" ng-show="property.kitchen">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="eating" id="property.eating" ng-model="property.eating">
+                        <label class="form-check-label" for="property.eating">Cutlery, Plates & Cups</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3" ng-show="property.kitchen">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="coffeemachine" id="property.coffeemachine" ng-model="property.coffeemachine">
+                        <label class="form-check-label" for="property.coffeemachine">Coffe Machine</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="power" id="property.power" ng-model="property.power">
+                        <label class="form-check-label" for="property.power">Power / Electricity</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="campfire" id="property.campfire" ng-model="property.campfire">
+                        <label class="form-check-label"for="property.campfire">Campfire Permitted</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3" ng-show="property.campfire">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="firewood" id="property.firewood" ng-model="property.firewood">
+                        <label class="form-check-label" for="property.firewood">Firewood available</label>
+                    </div>
+                </div>
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="kids" id="property.kids" ng-model="property.kids">
+                        <label class="form-check-label"for="property.kids">Kids Playground</label>
+                    </div>
+                </div> 
+                <div class="col-md-8  p-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="pets" id="property.pets" ng-model="property.pets">
+                        <label class="form-check-label" for="property.pets">Pet Friendly</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

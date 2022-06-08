@@ -1,0 +1,123 @@
+<div ng-include="'view/menu.html'"></div>
+
+<div ng-controller="searchCtrl" ng-init="showProperties()">
+  <div>
+    <div style="max-width:100%; height:auto; width:100%; background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 100px"></div>
+    <h1 class="justify-content">Find Your Ground</h1>
+    <p class="justify-content" style="font-weight: bold;">A new way of finding your next campground.</p>
+  </div>
+  <div class="container bg-white p-4 border rounded justify-content" style="margin-top: 50px;">
+    <div class="row">
+      <div class="column">
+        <div class="flex justify-content">
+          <div class="text-align-center">
+            <h4>What do you want in your next camp trip?</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm pt-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="maxprice" ng-model="maxprice">
+              <label class="form-check-label" for="maxprice">Budget</label>
+            </div>
+            <div ng-show="maxprice" class="col-md pt-3">
+              <script>
+                var slider = document.getElementById("myRange");
+                var output = document.getElementById("demo");
+                output.innerHTML = slider.value; // Display the default slider value
+                
+                // Update the current slider value (each time you drag the slider handle)
+                slider.oninput = function() {
+                  output.innerHTML = this.value;
+                }
+              </script>
+              <input type="range" min="10" max="120" value="65" id="myRange" ng-model="pricing" style="width: 100%;">
+              <p style="font-size: medium;">Less than $<span id="demo"></span> per night</p>
+            </div>
+          </div>
+          <div class="col-sm pt-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="minresources" ng-model="minresources">
+              <label class="form-check-label" for="minresources">Amenities</label>
+            </div>
+            <div ng-show="minresources">
+              <script>
+                $('select').selectpicker();
+              </script>
+              <div class="mt-4">
+                <select ng-model="resources" class="col-md" multiple aria-label="size 3 select example">
+                  <option value="potablewater">Potable water</option>
+                  <option value="toilet">Toilet</option>
+                  <option value="shower">Shower</option>
+                  <option value="hotshower">Hot Shower</option>
+                  <option value="power">Power / Electricity</option>
+                  <option value="kitchen">Kitchen</option>
+                  <option value="toilet">Fridge</option>
+                  <option value="cooking">Cooking tools</option>
+                  <option value="eating">Cutlery, Plates & Cups</option>
+                  <option value="coffeemachine">Coffemachine</option>
+                  <option value="campfire">Campfire Permitted</option>
+                  <option value="firewood">Firewood provided</option>
+                  <option value="kids">Kids Playground</option>
+                  <option value="pets">Pet Friendly</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm pt-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="minsurroundings" ng-model="minsurroundings">
+              <label class="form-check-label" for="minsurroundings">Surroundings</label>
+            </div>
+            <div ng-show="minsurroundings">
+              <div class="mt-4">
+                <select ng-model="surroundings" id="surroundings" class="col-md-14" multiple aria-label="size 3 select example" >
+                  <option value="grocery">Grocery Shop</option>
+                  <option value="ocean">Ocean</option>
+                  <option value="lake">Lake</option>
+                  <option value="river">River</option>
+                  <option value="nationalpark">National Park</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm pt-3">
+            <div class="">
+              <button style="width: 120px; background-color: black;" class="btn btn-primary" ng-click="searchProperty(resources, surroundings, pricing)">FIND</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="ul-search pt-5">
+    <li class="ul-li-a" ng-repeat="property in properties">
+      <a href="#/property/{{property.propertyid}}">
+        <img src="{{property.coverphoto}}" class="picture card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="card-title">{{property.propertyname}}</h6>
+          <h6 style="font-size: small;" class="card-subtitle text-muted">{{property.city}}, {{property.country}}</h6>
+        </div>
+      </a>
+    </li>
+  </ul>    
+</div>
+
+
+
+
+<!--
+
+<div class="row-wide"  >
+  <div class="jumbotron">
+    <div>
+      <div class="row-700 logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px"></div>
+      <h1 class="justify-content fancy">Find Your Ground</h1>
+      <p class="justify-content" style="font-weight: bold;">A new way of finding your next campground.</p>
+    </div>
+          
+    
+  </div>   
+</div>
+-->

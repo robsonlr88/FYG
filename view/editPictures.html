@@ -1,0 +1,165 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown" ng-init="getEditProperty()">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="panel-heading p-3 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h3 class="panel-title justify-content text-align-center">Property Pictures</h3>
+        </div>
+        <form name="form" class="form-pictures" ng-submit="insert(property)">
+            <div style="margin-top: 20px;">
+                <div>
+                    <h4 class="justify-content text-align-center">Cover Photo</h3>
+                    <div class="justify-content text-align-center">
+                        <input ng-model="property.image0" onchange="angular.element(this).scope().uploadedFile0(this)" type="file" accept="image/*"  style="margin-bottom: 15px; margin-top: 15px; width: 15rem;" class="form-control" ng-required="true"/>
+                    </div>
+                    <div class="justify-content text-align-center">
+                        <img src="{{property.coverphoto}}" class="propviewcoverphoto" id="output0"/>
+                    </div>
+                </div>
+                <div class="column pt-5">
+                    <div class="grid md-grid-cols-2">
+                      <div>
+                        <h4 class="justify-content text-align-center">Picture 01</h3>
+                        <div class="justify-content text-align-center">
+                            <input ng-model="property.image1" onchange="angular.element(this).scope().uploadedFile1(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                        </div>
+                        <div class="justify-content text-align-center" >
+                            <img src="{{property.image1}}" class="insert-pictures" id="output1" class="form-control img-responsive"/>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="justify-content text-align-center">Picture 02</h3>
+                        <div class="justify-content text-align-center">
+                            <input ng-model="property.image2" onchange="angular.element(this).scope().uploadedFile2(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                        </div>
+                        <div class="justify-content text-align-center" >
+                            <img src="{{property.image2}}" class="insert-pictures" id="output2" class="form-control"/>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="justify-content text-align-center">Picture 03</h3>
+                        <div class="justify-content text-align-center">
+                            <input ng-model="property.image3" onchange="angular.element(this).scope().uploadedFile3(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                        </div>
+                        <div class="justify-content text-align-center" >
+                            <img src="{{property.image3}}" class="insert-pictures" id="output3" class="form-control img-responsive"/>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="justify-content text-align-center">Picture 04</h3>
+                        <div class="justify-content text-align-center">
+                            <input ng-model="property.image4" id="property.image4" name="property.image4" onchange="angular.element(this).scope().uploadedFile4(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                        </div>
+                        <div class="justify-content text-align-center">
+                            <img src="{{property.image4}}" class="insert-pictures" id="output4" class="form-control img-responsive" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="column" style="margin-top: 60px;">
+                        <div class="flex justify-content">
+                          <div class="text-align-center">
+                            <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/editProperty/{{property.propertyid}}">Return to editing page</a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="flex justify-content">
+                          <div class="text-align-center">
+                            <button style="width: 300px; margin-bottom: 15px;" 
+                        class="btn btn-primary btn-block" ng-click="propertyPictures(property)">SAVE</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--
+<div class="row-wide" ng-init="getEditProperty()">
+    <div class="row-1000px">
+        <div class="jumbotron panel-info">
+            <div class="panel-heading" style="background-color: #03037a; color: white; margin-bottom: 30px;">
+                <h3 class="panel-title justify-content text-align-center">
+                    Property Pictures
+                </h3>
+            </div>
+            <form name="form" class="form-pictures" ng-submit="insert(property)">
+                <div style="margin-top: 20px;">
+                    <div>
+                        <h4 class="justify-content text-align-center">Cover Photo</h3>
+                        <div class="justify-content text-align-center">
+                            <input ng-model="property.image0" onchange="angular.element(this).scope().uploadedFile0(this)" type="file" accept="image/*"  style="margin-bottom: 15px; margin-top: 15px; width: 15rem;" class="form-control" ng-required="true"/>
+                        </div>
+                        <div class="justify-content text-align-center">
+                            <img src="{{property.coverphoto}}" class="propviewcoverphoto" id="output0"/>
+                        </div>
+                    </div>
+                    <div class="column pt-5">
+                        <div class="grid md-grid-cols-2">
+                          <div>
+                            <h4 class="justify-content text-align-center">Picture 01</h3>
+                            <div class="justify-content text-align-center">
+                                <input ng-model="property.image1" onchange="angular.element(this).scope().uploadedFile1(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                            </div>
+                            <div class="justify-content text-align-center" >
+                                <img src="{{property.image1}}" class="insert-pictures" id="output1" class="form-control img-responsive"/>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 class="justify-content text-align-center">Picture 02</h3>
+                            <div class="justify-content text-align-center">
+                                <input ng-model="property.image2" onchange="angular.element(this).scope().uploadedFile2(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                            </div>
+                            <div class="justify-content text-align-center" >
+                                <img src="{{property.image2}}" class="insert-pictures" id="output2" class="form-control"/>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 class="justify-content text-align-center">Picture 03</h3>
+                            <div class="justify-content text-align-center">
+                                <input ng-model="property.image3" onchange="angular.element(this).scope().uploadedFile3(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                            </div>
+                            <div class="justify-content text-align-center" >
+                                <img src="{{property.image3}}" class="insert-pictures" id="output3" class="form-control img-responsive"/>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 class="justify-content text-align-center">Picture 04</h3>
+                            <div class="justify-content text-align-center">
+                                <input ng-model="property.image4" id="property.image4" name="property.image4" onchange="angular.element(this).scope().uploadedFile4(this)" type="file" accept="image/*"  style="margin-bottom: 15px; width: 180px;" class="form-control" ng-required="true"/>
+                            </div>
+                            <div class="justify-content text-align-center">
+                                <img src="{{property.image4}}" class="insert-pictures" id="output4" class="form-control img-responsive" />
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="column" style="margin-top: 60px;">
+                            <div class="flex justify-content">
+                              <div class="text-align-center">
+                                <a style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" href="#/editProperty/{{property.propertyid}}">Return to editing page</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="flex justify-content">
+                              <div class="text-align-center">
+                                <button style="width: 300px; margin-bottom: 15px;" 
+                            class="btn btn-primary btn-block" ng-click="propertyPictures(property)">SAVE</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div> 
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

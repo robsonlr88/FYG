@@ -1,0 +1,58 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown" ng-controller="signupCtrl">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div id="formContent">
+            <div class="fadeIn first pt-3">
+                <div class="row-wide logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px" id="icon" alt="User Icon"></div>
+            </div>
+            <div ng-if="emailVerified">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Email Confirmation</h3>
+                <br>
+
+                <h4>Congratulations, your email has been verified.</h4>
+                <h5>You may now login to your account.</a></h5>
+                <a href="#/login"><input type="submit" class="fadeIn fourth" value="Log In" ng-click="login(user)" ng-disabled="logform.$invalid" id="loginbutton"></a>
+            </div>
+            <div ng-if="emailNotVerified">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Email Confirmation</h3>
+                <br>
+                <h4>{{signup.message}}</h4>
+                <br>
+                <a href="#/login"><input type="submit" class="fadeIn fourth" value="Log In" ng-click="login(user)" ng-disabled="logform.$invalid" id="loginbutton"></a>
+            </div>
+        </div>
+        <div class="alert alert-danger text-center" ng-show="errorLogin">
+            {{ errorMsg }}
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="row-wide" ng-controller="signupCtrl">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="fadeIn first pt-3">
+                <div class="row-wide logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px" id="icon" alt="User Icon"></div>
+            </div>
+            <div ng-if="emailVerified">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Email Confirmation</h3>
+                <br>
+
+                <h4>Congratulations, your email has been verified.</h4>
+                <h5>You may now login to your account.</a></h5>
+                <a href="#/login"><input type="submit" class="fadeIn fourth" value="Log In" ng-click="login(user)" ng-disabled="logform.$invalid" id="loginbutton"></a>
+            </div>
+            <div ng-if="emailNotVerified">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Email Confirmation</h3>
+                <br>
+                <h4>{{signup.message}}</h4>
+                <br>
+                <a href="#/login"><input type="submit" class="fadeIn fourth" value="Log In" ng-click="login(user)" ng-disabled="logform.$invalid" id="loginbutton"></a>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger text-center" ng-show="errorLogin">
+        {{ errorMsg }}
+    </div>
+</div>

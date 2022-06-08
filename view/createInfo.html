@@ -1,0 +1,140 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown" ng-controller="propertyInfoCtrl" ng-init=getIdInfo()>
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="panel-heading p-3 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h3 class="panel-title justify-content text-align-center">Property Information</h3>
+        </div>
+        <div class="column pb-5">
+            <div class="justify-content text-align-center">
+                <div class="progress">
+                    <div class="progress__fill"></div>
+                    <span class="progress__text">0%</span>
+                </div>
+            </div>
+        </div>
+        <form name="insertPropertyForm" class="form-submission">
+            <div class="column" ng-if="withData">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <a style="width: 300px; margin-top: 15px;" class="btn btn-primary btn-block" href="#/propertyResources/{{property.propertyid}}">NEXT</a>
+                  </div>
+                </div>
+            </div>
+            <div class="column pb-5">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <button style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" ng-click="propertyInfo(property)" ng-disabled="insertPropertyForm.$invalid">SAVE</button>
+                  </div>
+                </div>
+            </div>
+            <div class=" pb-5">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                        <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertyname" name="name" placeholder="Property Name" ng-required="true"/> 
+                    </div>
+                </div>
+            </div>
+            <div class="column pt-3">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <h4>Location Details</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertyaddress" name="address" placeholder="Address" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertyzipcode" name="zipcode" placeholder="Zipcode" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertycity" name="city" placeholder="City" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <select style="margin-bottom: 15px;" type="select" class="fadeIn second p-3 border rounded border-light text-center bg-gray" placeholder="Province" name="province" ng-model="property.propertyprovince" ng-required="true">
+                            <option value="">Province</option>
+                            <option value="Alberta">Alberta</option>
+                            <option value="British Colombia">British Colombia</option>
+                            <option value="Manitoba">Manitoba</option>
+                            <option value="New Brunswick">New Brunswick</option>
+                            <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                            <option value="Northwest Territories">Northwest Territories</option>
+                            <option value="Nova Scotia">Nova Scotia</option>
+                            <option value="Nunavut">Nunavut</option>
+                            <option value="Prince Edward Island">Prince Edward Island</option>
+                            <option value="Quebec">Quebec</option>
+                            <option value="Ontario">Ontario</option>
+                            <option value="Saskatchewan">Saskatchewan</option>
+                            <option value="Yukon">Yukon</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" placeholder="Canada" ng-required="true" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="column pb-5">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <small class="form-text text-muted">At this time we're accepting properties only in Canada.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column pt-3">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <h4>Property Contact Details</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertyphone" name="phone" placeholder="Phone Number" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertywebsite" name="website" placeholder="Website" ng-required="true"/>
+
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="flex justify-content">
+                    <div class="text-align-center">
+                        <input style="margin-bottom: 15px;" class="fadeIn second p-3 border rounded border-light text-center bg-gray" type="text" ng-model="property.propertyemail" name="email" placeholder="Email address" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+            <div class="column pb-5">
+                <div class="flex justify-content">
+                  <div class="text-align-center">
+                    <button style="width: 300px; margin-top: 15px; margin-bottom: 15px;" class="btn btn-primary btn-block" ng-click="propertyInfo(property)" ng-disabled="insertPropertyForm.$invalid">SAVE</button>
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+
+<div class="wrapper fadeInDown" ng-controller="signupCtrl">
+  <div class="p-5 col-sm bg-white border rounded border-light">
+    <div id="formContent">
+      <div class="fadeIn first pt-3 pb-3">
+        <div class="row-wide logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px" id="icon" alt="User Icon"></div>
+      </div>
+      <div class="panel-body">
+        <h4><b>Now it's time to activate your account.<b> </h4>
+        <h5 style="padding-top: 15px;">Your account is now created.</h5>
+        <h5>Please check your email and click on the link we've sent you.</h5>
+        <h5 style="padding-top: 25px;"><b>Find Your Ground team</b></h5>
+    </div>
+    <div class="alert alert-success text-center" ng-show="successSignup">
+      <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+      {{ successMsg }}
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="row-wide" ng-controller="signupCtrl">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <div class="fadeIn first pt-3 pb-3">
+            <div class="row-wide logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px" id="icon" alt="User Icon"></div>
+          </div>
+      
+          <div class="panel-body">
+
+            <h4><b>Now it's time to activate your account.<b> </h4>
+    
+            <h5 style="padding-top: 15px;">Your account is now created.</h5>
+    
+            <h5>Please check your email and click on the link we've sent you.</h5>
+    
+            <h5 style="padding-top: 25px;"><b>Find Your Ground team</b></h5>
+    
+        </div>
+      
+        </div>
+    </div>
+    <div class="alert alert-success text-center" ng-show="successSignup">
+        <button type="button" class="close" ng-click="clearMsg()"><span aria-hidden="true">&times;</span></button>
+        {{ successMsg }}
+    </div>
+</div>

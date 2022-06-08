@@ -1,0 +1,69 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+  
+
+<div class="m-3 p-5 col-sm bg-white border rounded border-light" ng-controller="myPropertiesCtrl" ng-init="getProperties()" ng-show="myProperty">
+  <h3 class="p-2 justify-content text-align-center">
+    <b>
+      Published Properties
+    </b>
+  </h3>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" style="width: 50%;">Name</th>
+        <th scope="col" style="width: 30%;" class="p-3">Status</th>
+        <th scope="col" style="width: 20%;">Edit/View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="property in properties">
+        <td style="width: 50%;" scope="row">
+          <div>
+            <h5>
+              {{property.propertyname}}
+            </h5>
+          </div>
+          <div>
+            {{property.city}}, {{property.country}}
+          </div>
+        </td>
+        <td style="width: 30%;" scope="row" class="p-2">{{property.posted}}</td>
+        <td style="width: 20%;" scope="row">
+          <div class="d-flex space-around">
+            <a href="#/editProperty/{{property.propertyid}}" class="p-1"><img height="24" width="24" src ="src/img/editIcon.svg" alt="Edit"/></a>
+            <a href="#/property/{{property.propertyid}}" class="p-1"><img height="24" width="24" src ="src/img/viewIcon.svg" alt="View"/></a>
+          </div>
+          <div>
+            
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3 class="pt-5 pb-2 justify-content text-align-center">
+    <b>
+      Unpublished Properties
+    </b>
+  </h3>
+  <table class="table" >
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" style="width: 50%;">Name</th>
+        <th scope="col" style="width: 30%;">Status</th>
+        <th scope="col" style="width: 20%;" style="width: 140px" class="d-flex justify-content space-between">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" ng-repeat="property in otherStatus">
+        <td>
+          <div><h5>{{property.propertyname}}</h5></div>
+          <div>{{property.city}}, {{property.country}}</div>
+        </td>                <td>{{property.finished}}</td>
+        <td><a href="#/review/{{property.propertyid}}"><img height="24"
+          viewBox="0 0 24 24" width="24" src ="src/img/editIcon.svg" alt="Edit"/></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

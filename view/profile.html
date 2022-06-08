@@ -1,0 +1,82 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+
+<div class="wrapper fadeInDown" ng-controller="profileCtrl">
+    <div class="p-5 col-sm bg-white border rounded border-light">
+        <div class="panel-heading p-2 rounded" style="background-color: #03037a; color: white; margin-bottom: 25px;">
+            <h3 class="panel-title justify-content text-align-center">Edit Personal Information</h3>
+        </div>
+        <form name="editPersonalInformationForm">
+            <div class="row mt-4">
+                <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" name="firstname" ng-model="profile.name" placeholder="First name"  id="firstName" type="text"/>
+            </div>
+            <div class="row mt-3">
+                <input class="fadeIn second p-3 border rounded border-light text-center bg-gray" name="lastname" ng-model="profile.lastname" placeholder="Last Name" class="form-control" id="lastname" type="text"/>
+            </div>
+            <div class="row mt-3">
+                <label for="dob">Date of Birth</label>
+                <div class="column" style="margin-bottom: 15px;">
+                    <div style="display:inline-flex; justify-content: space-between;">
+                    <input 
+                        style="width: 20%" 
+                        name="day"
+                        ng-model="profile.dayofbirth"
+                        placeholder="DD"
+                        class="fadeIn second p-3 border rounded border-light text-center bg-gray"                        
+                        id="day"
+                        type="text"/>
+                    <input 
+                        style="width: 20%"
+                        name="month"
+                        ng-model="profile.monthofbirth"
+                        placeholder="MM"
+                        class="fadeIn second p-3 border rounded border-light text-center bg-gray"                        
+                        id="month"
+                        type="text"/>
+                    <input 
+                        style="width: 20%"
+                        name="year"
+                        ng-model="profile.yearofbirth"
+                        placeholder="YYYY"
+                        class="fadeIn second p-3 border rounded border-light text-center bg-gray"
+                        id="year"
+                        type="text"/>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <label for="zipcode">ZipCode</label>
+                <input name="zipcode"
+                    ng-model="profile.zipcode"
+                    type="text"
+                    class="fadeIn second p-3 border rounded border-light text-center bg-gray"
+                    id="zipcode"
+                    style="margin-bottom: 15px;"
+                    placeholder="Zipcode"/>
+            </div>
+            <div class="row mt-3">
+                <label for="city">City</label>
+                <input name="city"
+                    ng-model="profile.city"
+                    type="text"
+                    class="fadeIn second p-3 border rounded border-light text-center bg-gray"
+                    id="city"
+                    style="margin-bottom: 15px;"
+                    placeholder="City"/>
+            </div>
+            <div class="row mt-3">
+                <label for="country">Country</label>
+                <input name="country"
+                    ng-model="profile.country"
+                    type="text"
+                    class="fadeIn second p-3 border rounded border-light text-center bg-gray"
+                    id="country"
+                    style="margin-bottom: 15px;"
+                    placeholder="Country"/>
+            </div>
+            <div class="row mt-3">
+            <a class="btn btn-default btn-primary btn-block" ng-click="updateProfile(profile)" role="button">Update</a>
+            </div>
+        </form>
+    </div>
+</div>

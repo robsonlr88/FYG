@@ -1,0 +1,25 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<div class="wrapper fadeInDown">
+  <div class="p-5 col-sm bg-white border rounded border-light">
+    <div class="fadeIn first">
+      <div class="row-wide logo-home" style="background-image: url(src/img/logo-noTitle.png); background-size: contain; background-repeat: no-repeat; background-position-x: 50%; min-height: 80px" id="icon" alt="User Icon"></div>
+    </div>
+
+    <div class="alert alert-danger text-center" ng-show="errorLogin">
+      {{ errorMsg }}
+    </div>
+    
+    <form name="logform">
+      <div class="row mt-4">
+        <input type="email" id="login" class="fadeIn second p-3 border rounded border-light text-center bg-gray" name="login" placeholder="Email" ng-model="user.username" required>
+      </div>
+      <div class="row mt-3">
+        <input type="password" id="password" class="fadeIn third p-3 border rounded border-light text-center" name="login" placeholder="Password" ng-model="user.password" required>
+      </div>
+      <div class="row mt-3">
+        <button class="fadeIn fourth btn btn-primary" ng-click="login(user)" ng-disabled="logform.$invalid" id="loginbutton" >Log In</button>   
+      </div>
+    </form>
+  </div>
+</div>

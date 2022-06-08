@@ -1,0 +1,173 @@
+body {
+  background: #F8F8FF;  
+  }
+
+  html{
+    font-size: 15px;
+}
+
+.jumbotron{
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px 10px 10px 10px;
+  padding: 3em;
+  
+}
+
+.logo-home{
+  height: 8rem;
+  width: 18rem;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.logo{
+  height: 4rem;
+  width: 9rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.column {
+	flex: 1;
+}
+
+.spread {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* reset uls */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	flex-wrap: wrap;
+}
+
+.menu {
+  padding: 13px 25px;
+}
+
+.row-700 {
+	max-width: 700px;
+	margin: auto;
+}
+
+.justify-content {
+	justify-content: center;
+	display: flex;
+}
+
+.ul-search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+	margin: 0;
+}
+
+.ul-li-a{
+  height: 15rem;
+  width: 15rem;
+  border: 1px solid whitesmoke;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #e72929;
+  background: white;
+}
+
+.search-bar {
+  padding: 20px;
+  border: 1px solid #B0C4DE;
+  background: white;
+  border-radius: 10px 10px 10px 10px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.picture{
+  height: 9.8rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+ul.reset {
+	list-style: none;
+	padding: 0;
+    margin: 0;
+}
+
+.links-quiet a {
+  text-decoration: none;
+  color: rgb(185, 185, 185);
+  line-height: 1.2;
+}
+
+.header-upper {
+  text-transform: uppercase;
+  font-size: .9em;
+letter-spacing: .1em;
+color:  rgb(185, 185, 185);
+}
+
+.ul-price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+margin: 0;
+
+}
+
+.tactile {
+  padding: 13px 13px;
+text-decoration: none;
+color: gray;
+font-weight: bold;
+font-size: 0.8rem;
+display: inline-block;
+}
+
+.tactile-menu {
+  padding: 13px 13px;
+text-decoration: none;
+color: gray;
+font-weight: bold;
+font-size: .9rem;
+display: inline-block;
+}
+
+.tactile-highlight {
+  padding: 13px 13px;
+text-decoration: none;
+color: gray;
+font-weight: bold;
+font-size: 1.1rem;
+display: inline-block;
+}
+
+
+a{
+  text-decoration: none;
+}
+
+/*///////////////*/
+
+
+
+
+
+
+
+

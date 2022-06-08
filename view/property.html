@@ -1,0 +1,196 @@
+<div ng-include="'view/menu.html'" style="margin-bottom: 10px;"></div>
+
+<h3 class=" justify-content pt-4">
+  <b>
+    {{ property.propertyname }}
+  </b>
+</h3>
+<h2  class=" justify-content pb-5">
+  {{ property.propertycity }}, {{ property.propertycountry }}
+</h2>
+    
+<div class="justify-content text-align-center">
+  <a href="{{property.coverphoto}}">
+    <img src="{{property.coverphoto}}" class="propviewcoverphoto"/>
+  </a>
+</div>
+
+<div class="container" >
+  <ul class="ul-search">
+    <li>
+      <a href="{{property.image1}}">
+        <img src="{{property.image1}}" class="propviewpictures"/>
+      </a>
+    </li>
+    <li>
+      <a href="{{property.image2}}">
+        <img src="{{property.image2}}" class="propviewpictures"/>
+      </a>
+    </li>
+    <li>
+      <a href="{{property.image3}}">
+        <img src="{{property.image3}}" class="propviewpictures"/>
+      </a>
+    </li>
+    <li>
+      <a href="{{property.image4}}">
+        <img src="{{property.image4}}" class="propviewpictures"/>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container mt-5">
+  <div class="row justify-content p-3" style="grid-gap: 40px;">
+    <div class="m-3 p-4 col-sm bg-white border rounded border-secondary">
+      <h3 class="pb-2 justify-content text-align-center">
+        <b>
+          Amenities
+        </b>
+      </h3>
+      <h4 class="pb-2" ng-show="property.potablewater">
+        Potable Water
+      </h4>
+      <h4 class="pb-2" ng-show="property.toilet">
+        Toilet
+      </h4>
+      <h4 class="pb-2" ng-show="property.shower">
+        Shower             
+      </h4>
+      <h4 class="pb-2" ng-show="property.hotshower">
+        Hot shower             
+      </h4>
+      <h4 class="pb-2" ng-show="property.kitchen">
+        Kitchen       
+      </h4>
+      <h4 class="pb-2" ng-show="property.fridge">
+        Fridge           
+      </h4>
+      <h4 class="pb-2" ng-show="property.cooking">
+        Oven, Pans & Pots          
+      </h4>
+      <h4 class="pb-2" ng-show="property.eating">
+        Cutlery, Plates & Cups   
+      </h4>
+      <h4 class="pb-2" ng-show="property.coffeemachine">
+        Coffee machine         
+      </h4>
+      <h4 class="pb-2" ng-show="property.power">
+        Power               
+      </h4>
+      <h4 class="pb-2" ng-show="property.campfire">
+        Campfire Permitted   
+      </h4>
+      <h4 class="pb-2" ng-show="property.firewood">
+        Firewood Available         
+      </h4>
+      <h4 class="pb-2" ng-show="property.kids">
+        Kids Playground   
+      </h4>
+      <h4 class="pb-2" ng-show="property.pets">
+        Pet Friendly         
+      </h4>
+    </div>
+
+    <div class="m-3 p-4 col-sm-5 bg-white border rounded border-secondary">
+      <div>
+        <h3 class="pb-2 justify-content text-align-center">
+          <b>
+            Surroundings
+          </b>
+        </h3>
+      </div>
+      <div class="pb-2" ng-show="property.grocery">
+        <h4>
+          Grocery ( {{ property.grocerydistance }} ) 
+        </h4>
+      </div>
+      <div class="pb-2" ng-show="property.ocean">
+        <h4>
+          Ocean ( {{ property.oceandistance }} )
+        </h4>
+      </div>
+      <div class="pb-2" ng-show="property.lake">
+        <h4>
+          Lake   ( {{ property.lakedistance }} ) 
+        </h4>
+      </div>
+      <div class="pb-2" ng-show="property.river">
+        <h4>
+          River ( {{ property.riverdistance }} )            
+        </h4>
+      </div>
+      <div class="pb-2" ng-show="property.nationalpark">
+        <h4>
+          National Park ( {{ property.nationalparkdistance }} )
+        </h4>
+      </div>              
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row justify-content p-3">
+    <div class="p-2 col-sm-6 bg-white border rounded border-secondary" >
+      <div class="column" >
+        <div class="flex justify-content">
+          <div class="text-align-center">
+            <h3 class="pb-2 justify-content text-align-center">
+              <b>
+                Rates per night
+              </b>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="container pb-4"  >
+        <ul class="ul-price">
+          <li class="col-md-7">
+            <h4>Price per Tent </h4>
+          </li>
+          <li class="col-md-3">
+            <h4>$ {{ property.tentprice }}</h4>
+          </li>
+        </ul>
+        <ul class="ul-price">
+          <li class="col-md-7">
+            <h4>Price per RV </h4>
+          </li>
+          <li class="col-md-3">
+            <h4> $ {{ property.rvprice }}</h4>
+          </li>
+        </ul>
+        <ul class="ul-price" ng-show="property.person">
+          <li class="col-md-7 ">
+            <h4>Price per person </h4>
+          </li>
+          <li class="col-md-3">
+            <h4> $ {{ property.personprice }}</h4>
+          </li>
+        </ul>
+        <ul class="ul-price" ng-show="property.otherfees">
+          <li class="col-md-7 ">
+            <h4>{{ property.otherfeesname }} </h4>
+          </li>
+          <li class="col-md-3">
+            <h4> $ {{ property.otherfeesprice }}</h4>
+          </li>
+        </ul>
+      </div>
+    </div>    
+  </div>
+</div>
+
+
+<div class="flex justify-content pt-3">
+  <div class="text-align-center">
+    <h4>Did you like this property?</h4>
+  </div>
+</div>
+<div class="flex justify-content">
+  <div class="text-align-center">
+    <h4><a href="" ng-click="propertyContactDetails()">Here you can get the property contact details</a></h4>
+  </div>
+</div>
